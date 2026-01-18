@@ -1,0 +1,41 @@
+version: 2
+updates:
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  # Flutter/Dart packages (pub)
+  - package-ecosystem: "pub"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "flutter"
+    groups:
+      flutter-packages:
+        patterns:
+          - "*"
+    ignore:
+      # Ignore major version updates for core packages (review manually)
+      - dependency-name: "flutter_riverpod"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "flutter_local_notifications"
+        update-types: ["version-update:semver-major"]

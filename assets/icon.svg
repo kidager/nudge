@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs>
+        <style>.b{fill:#000;}.w{fill:#fff;}.r{fill:#e64c4c;}</style>
+    </defs>
+    <title>nudge-icon</title>
+
+    <!-- Black outline around bell handle -->
+    <rect class="b" x="208" y="32" width="96" height="48"/>
+    <rect class="b" x="224" y="64" width="64" height="64"/>
+
+    <!-- Black outline around bell body -->
+    <rect class="b" x="176" y="96" width="160" height="48"/>
+    <rect class="b" x="144" y="128" width="64" height="64"/>
+    <rect class="b" x="304" y="128" width="64" height="64"/>
+    <rect class="b" x="112" y="160" width="64" height="224"/>
+    <rect class="b" x="336" y="160" width="64" height="224"/>
+    <rect class="b" x="80" y="352" width="352" height="64"/>
+
+    <!-- Black outline around clapper -->
+    <rect class="b" x="208" y="400" width="96" height="80"/>
+
+    <!-- Black outline around sound waves left -->
+    <rect class="b" x="32" y="224" width="48" height="48"/>
+    <rect class="b" x="32" y="288" width="48" height="48"/>
+    <rect class="b" x="64" y="256" width="48" height="48"/>
+
+    <!-- Black outline around sound waves right -->
+    <rect class="b" x="432" y="224" width="48" height="48"/>
+    <rect class="b" x="432" y="288" width="48" height="48"/>
+    <rect class="b" x="400" y="256" width="48" height="48"/>
+
+    <!-- Bell top handle - white -->
+    <rect class="w" x="224" y="48" width="64" height="32"/>
+    <rect class="w" x="240" y="80" width="32" height="32"/>
+
+    <!-- Bell body - white border outline -->
+    <rect class="w" x="192" y="112" width="128" height="32"/>
+    <rect class="w" x="160" y="144" width="32" height="32"/>
+    <rect class="w" x="320" y="144" width="32" height="32"/>
+    <rect class="w" x="128" y="176" width="32" height="192"/>
+    <rect class="w" x="352" y="176" width="32" height="192"/>
+    <rect class="w" x="96" y="368" width="320" height="32"/>
+
+    <!-- Bell body - red fill (inner) -->
+    <rect class="r" x="192" y="144" width="128" height="32"/>
+    <rect class="r" x="160" y="176" width="192" height="192"/>
+
+    <!-- Bell clapper - white -->
+    <rect class="w" x="224" y="432" width="64" height="32"/>
+    <rect class="w" x="240" y="416" width="32" height="16"/>
+
+    <!-- Sound waves left - white -->
+    <rect class="w" x="48" y="240" width="32" height="32"/>
+    <rect class="w" x="48" y="304" width="32" height="32"/>
+    <rect class="w" x="80" y="272" width="16" height="32"/>
+
+    <!-- Sound waves right - white -->
+    <rect class="w" x="432" y="240" width="32" height="32"/>
+    <rect class="w" x="432" y="304" width="32" height="32"/>
+    <rect class="w" x="416" y="272" width="16" height="32"/>
+</svg>
