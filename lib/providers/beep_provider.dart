@@ -292,16 +292,23 @@ class BeepEnabledNotifier extends Notifier<bool> {
   Future<void> toggle({bool permissionExplained = false}) async {
     final newValue = !state;
 
-    if (newValue && !_permissionsGranted) {
-      if (!permissionExplained && !kIsWeb) {
-        // UI should show explanation dialog first
-        return;
+    if (newValue && !kIsWeb) {
+      // Always check actual permission status, not cached value
+      final hasPermission =
+          await NotificationService.instance.arePermissionsGranted();
+
+      if (!hasPermission) {
+        if (!permissionExplained) {
+          // UI should show explanation dialog first
+          return;
+        }
+        final granted = await requestPermissions();
+        if (!granted) {
+          // Can't enable without permissions on mobile
+          return;
+        }
       }
-      _permissionsGranted = await requestPermissions();
-      if (!_permissionsGranted && !kIsWeb) {
-        // Can't enable without permissions on mobile
-        return;
-      }
+      _permissionsGranted = true;
     }
 
     await SettingsService.instance.setBool(_kBeepEnabledKey, newValue);
