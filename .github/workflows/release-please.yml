@@ -185,26 +185,25 @@ jobs:
         with:
           path: build/web
 
-  # Deploy to Google Play Store (requires setup)
-  # Uncomment when ready to deploy
-  # deploy-android:
-  #   needs: [release-please, build-android]
-  #   if: ${{ needs.release-please.outputs.release_created }}
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Download AAB
-  #       uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
-  #       with:
-  #         name: android-aab-${{ needs.release-please.outputs.tag_name }}
-  #
-  #     - name: Upload to Play Store
-  #       uses: r0adkll/upload-google-play@v1
-  #       with:
-  #         serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
-  #         packageName: ch.jacem.nudge
-  #         releaseFiles: app-release.aab
-  #         track: internal
-  #         status: completed
+  # Deploy to Google Play Store
+  deploy-android:
+    needs: [release-please, build-android]
+    if: ${{ needs.release-please.outputs.release_created }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download AAB
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+        with:
+          name: android-aab-${{ needs.release-please.outputs.tag_name }}
+
+      - name: Upload to Play Store
+        uses: r0adkll/upload-google-play@935ef9c68bb393a8e6116b1575626a7f5be3a7fb # v1.1.3
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: ch.jacem.nudge
+          releaseFiles: app-release.aab
+          track: internal
+          status: completed
 
   # Deploy to App Store (requires setup)
   # Uncomment when ready to deploy
