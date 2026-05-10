@@ -10,6 +10,7 @@ void main() {
   setUpAll(() async {
     await Tolgee.init();
   });
+
   testWidgets('App renders correctly in disabled state', (WidgetTester tester) async {
     SharedPreferences.setMockInitialValues({});
     final prefs = await SharedPreferences.getInstance();
@@ -20,19 +21,12 @@ void main() {
         child: const NudgeApp(),
       ),
     );
+    await tester.pumpAndSettle();
 
-    // Verify initial state shows disabled
-    expect(find.text('Disabled'), findsOneWidget);
     expect(find.text('Nudge'), findsOneWidget);
+    expect(find.text('Disabled'), findsOneWidget);
     expect(find.byIcon(Icons.notifications_off), findsOneWidget);
     expect(find.byType(Switch), findsOneWidget);
-
-    // Verify interval chips are shown
-    expect(find.text('1 min'), findsOneWidget);
-    expect(find.text('5 min'), findsOneWidget);
-    expect(find.text('15 min'), findsOneWidget);
-    expect(find.text('30 min'), findsOneWidget);
-    expect(find.text('1 hour'), findsOneWidget);
   });
 
   testWidgets('Interval selection works', (WidgetTester tester) async {
@@ -45,9 +39,14 @@ void main() {
         child: const NudgeApp(),
       ),
     );
+    await tester.pumpAndSettle();
 
-    // Tap on 5 min interval
-    await tester.tap(find.text('5 min'));
+    // Navigate to settings
+    await tester.tap(find.byIcon(Icons.settings));
+    await tester.pumpAndSettle();
+
+    // Select the 5 minute interval
+    await tester.tap(find.text('Every 5 minutes'));
     await tester.pump();
 
     // Verify selection persisted
