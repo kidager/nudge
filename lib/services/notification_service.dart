@@ -52,7 +52,7 @@ class NotificationService {
     );
 
     await _notifications.initialize(
-      initSettings,
+      settings: initSettings,
       onDidReceiveNotificationResponse: _onNotificationResponse,
     );
 
@@ -204,11 +204,11 @@ class NotificationService {
     var nextTime = startFrom;
     for (var i = 0; i < count; i++) {
       await _notifications.zonedSchedule(
-        i,
-        'Nudge',
-        _getTimeMessage(nextTime),
-        tz.TZDateTime.from(nextTime, tz.local),
-        details,
+        id: i,
+        title: 'Nudge',
+        body: _getTimeMessage(nextTime),
+        scheduledDate: tz.TZDateTime.from(nextTime, tz.local),
+        notificationDetails: details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         matchDateTimeComponents: null,
       );
