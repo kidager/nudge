@@ -125,6 +125,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       final hasPermission =
           await NotificationService.instance.arePermissionsGranted();
 
+      if (!context.mounted) return;
+
       if (!hasPermission) {
         final shouldProceed = await showDialog<bool>(
           context: context,

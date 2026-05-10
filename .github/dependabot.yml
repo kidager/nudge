@@ -12,6 +12,10 @@ updates:
     labels:
       - "dependencies"
       - "github-actions"
+    ignore:
+      # Flutter SDK runner - major bumps reviewed manually (toolchain change)
+      - dependency-name: "subosito/flutter-action"
+        update-types: ["version-update:semver-major"]
     groups:
       github-actions:
         patterns:

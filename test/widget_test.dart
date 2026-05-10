@@ -4,8 +4,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:nudge/main.dart';
 import 'package:nudge/providers/beep_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tolgee/tolgee.dart';
 
 void main() {
+  setUpAll(() async {
+    await Tolgee.init();
+  });
   testWidgets('App renders correctly in disabled state', (WidgetTester tester) async {
     SharedPreferences.setMockInitialValues({});
     final prefs = await SharedPreferences.getInstance();
